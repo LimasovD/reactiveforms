@@ -1,13 +1,17 @@
 <div class="container" [formGroup]="formGroup">
     <h2>Реактивные формы</h2>
-  <form class="direction">
+  <form class="direction"
+        (input)="onFormChange()"
+        (submit)="onSubmit()">
     <mat-form-field class="size">
       <mat-label>Логин</mat-label>
       <input
         matInput
         formControlName="login"
       >
-      <mat-error >
+      <mat-error
+      *ngIf="formGroup.hasError('required', 'login')"
+      >
         Это поле обязательно
       </mat-error>
     </mat-form-field>
@@ -18,12 +22,14 @@
         matInput
         formControlName="password"
       >
-      <mat-error>
+      <mat-error
+        *ngIf="formGroup.hasError('required', 'password')"
+      >
         Это поле обязательно
       </mat-error>
     </mat-form-field>
     <mat-error *ngIf="formError">{{ formError }}</mat-error>
-    <button mat-raised-button color="primary">Войти</button>
+    <button mat-raised-button color="primary" [disabled]="formGroup.invalid || !!formError">Войти</button>
 
   </form>
 </div>

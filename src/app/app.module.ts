@@ -10,12 +10,14 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {ReactiveFormsModule} from "@angular/forms";
+import { TestComponentComponent } from './test/test-component/test-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     Step1Component,
-    Step2Component
+    Step2Component,
+    TestComponentComponent
   ],
   imports: [
     BrowserModule,
