@@ -2,8 +2,47 @@
     <h2>Реактивные формы</h2>
   <form class="direction"
         (input)="onFormChange()"
-        (submit)="onSubmit()">
-    <mat-form-field class="size">
+        (submit)="onSubmit()"
+  >
+    <div class="direction">
+      <mat-form-field class="size" appearance="outline">
+        <mat-label>Квартира</mat-label>
+        <input
+          matInput
+          formControlName="login"
+        >
+        <mat-error
+        >
+          Это поле обязательно
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="direction position">
+      <mat-form-field class="size" appearance="outline">
+        <mat-select
+          placeholder="Телефон"
+        >
+          <mat-option
+            value="Домашний"
+          >Домашний</mat-option>
+          <mat-option
+            value="Мобильный"
+          >Мобильный</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button
+        mat-raised-button>
+        <mat-icon color="primary">add</mat-icon>
+      </button>
+      <button
+        mat-raised-button>
+        <mat-icon color="warn">delete</mat-icon>
+      </button>
+
+    </div>
+
+
+    <mat-form-field class="size" appearance="outline">
       <mat-label>Логин</mat-label>
       <input
         matInput
@@ -16,7 +55,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="size">
+    <mat-form-field class="size" appearance="outline">
       <mat-label>Пароль</mat-label>
       <input
         matInput
