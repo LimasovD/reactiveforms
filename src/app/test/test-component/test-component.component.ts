@@ -14,7 +14,7 @@ export class TestComponentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onLogin(value: any) {
+  onAdding(value: any) {
     console.log('OnTestcomponent: ', value);
     this.serverError += 'r';
   }

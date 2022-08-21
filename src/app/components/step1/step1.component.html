@@ -1,52 +1,41 @@
 <div class="container" [formGroup]="formGroup">
-    <h2>Реактивные формы</h2>
+    <h2>{{ title }}</h2>
   <form class="direction"
         (input)="onFormChange()"
         (submit)="onSubmit()"
   >
-    <div class="direction">
-      <mat-form-field class="size" appearance="outline">
-        <mat-label>Квартира</mat-label>
-        <input
-          matInput
-          formControlName="login"
-        >
-        <mat-error
-        >
-          Это поле обязательно
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <div class="direction position">
-      <mat-form-field class="size" appearance="outline">
-        <mat-select
-          placeholder="Телефон"
-        >
-          <mat-option
-            value="Домашний"
-          >Домашний</mat-option>
-          <mat-option
-            value="Мобильный"
-          >Мобильный</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button
-        mat-raised-button>
-        <mat-icon color="primary">add</mat-icon>
-      </button>
-      <button
-        mat-raised-button>
-        <mat-icon color="warn">delete</mat-icon>
-      </button>
+    <div
+      class="direction"
+      style="display: block;"
+
+    formArrayName="phone"
+    >
+      <ng-container *ngFor="let userFormGroup of userFormGroup.controls; let i = index">
+        <mat-form-field class="input-icon-size" appearance="outline">
+          <mat-label>Телефон</mat-label>
+          <input
+            matInput
+            formControlName="{{i}}"
+            style="display: block;"
+          >
+          <mat-icon color="warn" (click)=" removePhone(i)" class="input-icon">delete</mat-icon>
+          <mat-error
+          >
+            Это поле обязательно
+          </mat-error>
+        </mat-form-field>
+
+      </ng-container>
+
 
     </div>
 
 
     <mat-form-field class="size" appearance="outline">
-      <mat-label>Логин</mat-label>
+      <mat-label>Имя</mat-label>
       <input
         matInput
-        formControlName="login"
+        formControlName="name"
       >
       <mat-error
       *ngIf="formGroup.hasError('required', 'login')"
@@ -56,10 +45,10 @@
     </mat-form-field>
 
     <mat-form-field class="size" appearance="outline">
-      <mat-label>Пароль</mat-label>
+      <mat-label>Фамилия</mat-label>
       <input
         matInput
-        formControlName="password"
+        formControlName="surName"
       >
       <mat-error
         *ngIf="formGroup.hasError('required', 'password')"
@@ -68,7 +57,10 @@
       </mat-error>
     </mat-form-field>
     <mat-error *ngIf="formError">{{ formError }}</mat-error>
-    <button mat-raised-button color="primary" [disabled]="formGroup.invalid || !!formError">Войти</button>
+    <div>
+      <button mat-raised-button color="primary" [disabled]="formGroup.invalid || !!formError">Войти</button>
+      <button mat-raised-button color="primary" (click)="addPhone()" style="margin-bottom: 15px" type="button">Добавить</button>
+    </div>
 
   </form>
 </div>

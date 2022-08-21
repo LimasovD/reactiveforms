@@ -4,18 +4,29 @@
   align-items: center;
 }
 .position {
-  flex-direction: row;
   align-items: baseline;
- width: 300px;
 }
-.size {
-  width: 300px;
+.input-icon-size {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
 }
 
 button {
-  width: 150px;
+  width: 100px;
 }
 
 h2 {
   text-align: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 155px;
+  top: 5px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
